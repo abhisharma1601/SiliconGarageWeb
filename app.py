@@ -52,7 +52,7 @@ def portfolioastrodrishti():
 def terms():
     return render_template("/data/terms.html")
 
-@app.route("/Privacypolicy")
+@app.route("/PrivacyPolicy")
 def privacy():
     return render_template("/data/privacy.html")
 
