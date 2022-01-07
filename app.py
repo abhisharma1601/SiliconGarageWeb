@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request
 from werkzeug.utils import redirect
 
-
-
 app = Flask(__name__)
 
 def send_email(user, pwd, recipient, subject, body):
@@ -17,7 +15,7 @@ def send_email(user, pwd, recipient, subject, body):
     message = """From: %s\nTo: %s\nSubject: %s\n\n%s
     """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
 
-    with smtplib.SMTP_SSL(host="mail.stackx.online") as smtp:
+    with smtplib.SMTP_SSL(host="mail.silicongarage.in") as smtp:
         smtp.login(user,pwd)
         smtp.sendmail(user,TO,message)
         smtp.quit()
@@ -50,15 +48,23 @@ def portfoliobjp():
 def portfolioastrodrishti():
     return render_template("/portfolios/astrodrishti.html")
 
+@app.route("/send_newsletter", methods = ['POST'])
+def newsletter():
+    email = request.form['email']
+    send_email("info@silicongarage.in","Qazx1234@...","garagesilicon@gmail.com","A new newsletter join","Mail: {0}".format(email))
+    send_email("info@silicongarage.in","Qazx1234@...",email,"Thank You","Thank you for visiting our website.\nYou are registered as a member with subscription of our monthly news letter.\nThankyou for subscribing.\nTeam Silicon Garage")
+    return redirect("/")
+
 @app.route("/sendquery", methods = ["POST"])
 def send_query():
     name = request.form['name1']
     email = request.form['email']
     phone = request.form['phone']
     query = request.form['message']
-    send_email("astrodrishti@stackx.online","StackX@123","4abhi45@gmail.com","A new Query","Name: {0}\nEmail: {1}\nPhone No. : {2}\nQuery: {3}".format(name,email,phone,query))
+    send_email("info@silicongarage.in","Qazx1234@...","garagesilicon@gmail.com","A new Query","Name: {0}\nEmail: {1}\nPhone No. : {2}\nQuery: {3}".format(name,email,phone,query))
+    send_email("info@silicongarage.in","Qazx1234@...",email,"Thank You","Thank you for contacting us.\nOur representatives will reach out to you soon.\nTeam Silicon Garage")
     return redirect("/")
     
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
