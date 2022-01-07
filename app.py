@@ -48,6 +48,14 @@ def portfoliobjp():
 def portfolioastrodrishti():
     return render_template("/portfolios/astrodrishti.html")
 
+@app.route("/terms&conditions")
+def terms():
+    return render_template("/data/terms.html")
+
+@app.route("/Privacypolicy")
+def privacy():
+    return render_template("/data/privacy.html")
+
 @app.route("/send_newsletter", methods = ['POST'])
 def newsletter():
     email = request.form['email']
