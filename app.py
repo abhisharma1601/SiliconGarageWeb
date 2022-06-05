@@ -44,10 +44,6 @@ def portfoliocraffic():
 def portfoliobjp():
     return render_template("/portfolios/bjp.html")
 
-@app.route("/portfolio/astrodrishti")
-def portfolioastrodrishti():
-    return render_template("/portfolios/astrodrishti.html")
-
 @app.route("/terms&conditions")
 def terms():
     return render_template("/data/terms.html")
