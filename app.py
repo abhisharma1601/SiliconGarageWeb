@@ -55,7 +55,7 @@ def privacy():
 @app.route("/send_newsletter", methods = ['POST'])
 def newsletter():
     email = request.form['email']
-    send_email("info@silicongarage.in","Qazx1234@...","garagesilicon@gmail.com","A new newsletter join","Mail: {0}".format(email))
+    send_email("info@silicongarage.in","Qazx1234@...","A new newsletter join","Mail: {0}".format(email))
     send_email("info@silicongarage.in","Qazx1234@...",email,"Thank You","Thank you for visiting our website.\nYou are registered as a member with subscription of our monthly news letter.\nThankyou for subscribing.\nTeam Silicon Garage")
     return redirect("/")
 
@@ -65,7 +65,7 @@ def send_query():
     email = request.form['email']
     phone = request.form['phone']
     query = request.form['message']
-    send_email("info@silicongarage.in","Qazx1234@...","garagesilicon@gmail.com","A new Query","Name: {0}\nEmail: {1}\nPhone No. : {2}\nQuery: {3}".format(name,email,phone,query))
+    send_email("info@silicongarage.in","Qazx1234@...","A new Query","Name: {0}\nEmail: {1}\nPhone No. : {2}\nQuery: {3}".format(name,email,phone,query))
     send_email("info@silicongarage.in","Qazx1234@...",email,"Thank You","Thank you for contacting us.\nOur representatives will reach out to you soon.\nTeam Silicon Garage")
     return redirect("/")
     
