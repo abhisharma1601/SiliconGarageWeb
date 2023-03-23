@@ -15,7 +15,7 @@ def send_email(user, pwd, recipient, subject, body):
     message = """From: %s\nTo: %s\nSubject: %s\n\n%s
     """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
 
-    with smtplib.SMTP_SSL(host="mail.silicongarage.in") as smtp:
+    with smtplib.SMTP_SSL(host="") as smtp:
         smtp.login(user,pwd)
         smtp.sendmail(user,TO,message)
         smtp.quit()
